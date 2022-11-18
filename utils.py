@@ -7,7 +7,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 def scrape_jobs(driver: WebDriver) -> list[WebElement]:
-    sleep(5)
+    sleep(randint(5, 10))
     scroll_until_end(driver)
     return get_jobs(driver)
 
@@ -26,7 +26,7 @@ def get_jobs(driver: WebDriver):
 def scroll_page(driver: WebDriver, part_of_page: int):
     if part_of_page != 0:
         driver.execute_script(f"document.querySelector('.jobs-search-results-list').scroll(0, document.querySelector('.jobs-search-results-list').scrollHeight / {part_of_page})")
-        sleep(2)
+        sleep(randint(2, 5))
 
 
 def create_url(url: str, next_page: int) -> str:

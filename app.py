@@ -49,7 +49,7 @@ def work():
 
 def scrape_data(job: WebElement) -> dict:
     job.click()
-    sleep(4)
+    sleep(randint(4, 7))
     jobPost = Job(job.get_attribute('data-job-id'), driver)
     return jobPost.get_info()
 
