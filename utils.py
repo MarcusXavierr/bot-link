@@ -1,3 +1,5 @@
+from random import randint
+import re
 from time import sleep
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -28,6 +30,6 @@ def scroll_page(driver: WebDriver, part_of_page: int):
 
 
 def create_url(url: str, next_page: int) -> str:
-    if 'start=' in url:
-        return url + f'&start={next_page * 25 + 1}'
+    if next_page < 1:
+        return url + f'&start={next_page * 25}'
     return re.sub('start=[0-9][0-9]?[0-9]?', f'start={next_page * 25 + 1}', url)
